@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { initialState, IFilialItem } from "./initialState";
+import { initialState, IFilialItem, IMenu } from "./initialState";
 
 const appSlice = createSlice({
   name: "app",
@@ -19,6 +19,10 @@ const appSlice = createSlice({
 
     setCurrentFilial(state, action: PayloadAction<IFilialItem>) {
       state.currentFilial = action.payload;
+    },
+
+    setgoods(state, action: PayloadAction<IMenu[]>) {
+      state.goods = action.payload;
     },
   },
 });

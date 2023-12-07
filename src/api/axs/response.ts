@@ -14,13 +14,15 @@ export const getFilials = () => {
   );
 };
 
-export const getPagesGoods = (filialId: number, name: string | undefined) => {
+export const getPagesGoods = (filialId: number) => {
   return axs.get(
-    `/filial/${filialId}/${name}/`,
+    `/filial/${filialId}/menu/`,
 
     {
       params: {
         limit: 100,
+        page: 1,
+        // name: name,
       },
     }
   );

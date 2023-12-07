@@ -15,7 +15,7 @@ const BarLinks: FC = () => {
           <ListItem key={i} sx={{ p: 0 }}>
             <Link
               className={clsx(style.link)}
-              href={`${currentFilial.id}/${value}`}
+              href={`/${currentFilial.id}/${value}`}
               variant="body2"
               sx={{
                 color: "#072659",
