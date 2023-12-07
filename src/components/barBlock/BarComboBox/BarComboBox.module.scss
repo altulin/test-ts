@@ -1,0 +1,12 @@
+@import "@/sass/helpers/variables";
+@import "@/sass/helpers/mixins.scss";
+
+.autocomplete {
+  font-size: 1rem;
+  color: #072659;
+
+  .input {
+    color: #072659;
+    font-size: 1rem;
+  }
+}

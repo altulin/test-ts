@@ -1,0 +1,17 @@
+@import "@/sass/helpers/variables";
+@import "@/sass/helpers/mixins.scss";
+
+.field {
+  .label {
+    color: #657a9d;
+    transform: translate(torem(14), torem(3));
+  }
+  .input {
+    font-size: torem(18);
+    padding-top: torem(3);
+    padding-bottom: torem(3);
+  }
+}
+.complite input {
+  color: #657a9d;
+}

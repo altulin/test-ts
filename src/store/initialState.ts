@@ -1,13 +1,14 @@
-export interface IModalState {
-  [key: string]: { step: number };
+export interface IFilialItem {
+  id: number;
+  label: string;
 }
 
 interface IInitialState {
-  isMobileOrTablet: boolean;
-  modalState: IModalState | null;
+  filials: null | IFilialItem[];
+  currentFilial: null | IFilialItem;
 }
 
 export const initialState: IInitialState = {
-  isMobileOrTablet: false,
-  modalState: { auth: { step: 1 } },
+  filials: null,
+  currentFilial: null,
 };
