@@ -10,10 +10,18 @@ const Promo = () => {
       sx={{ width: "76%", pt: "6.375rem", pb: "6.375rem" }}
     >
       <Grid container sx={{ ml: 0, mr: 0, columnGap: "1rem" }} wrap="nowrap">
-        <Grid sx={{ width: "18.6%", p: 0 }}>
+        <Grid sx={{ width: "18.6%", p: 0, flexShrink: 0 }}>
           <Bar />
         </Grid>
-        <Grid sx={{ flexGrow: 1, p: 0 }}>
+        <Grid
+          sx={{
+            flexGrow: 1,
+            p: 0,
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+          }}
+        >
           <TableBlock />
         </Grid>
       </Grid>

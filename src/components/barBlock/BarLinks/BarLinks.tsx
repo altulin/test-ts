@@ -4,6 +4,7 @@ import { links, ILinks } from "./var";
 import { useAppSelector } from "@/hooks/hook";
 import clsx from "clsx";
 import style from "./BarLinks.module.scss";
+import { Link as RouterLink } from "react-router-dom";
 
 const BarLinks: FC = () => {
   const { currentFilial } = useAppSelector((state) => state.app);
@@ -14,8 +15,9 @@ const BarLinks: FC = () => {
         {links.map(({ label, value }: ILinks, i: number) => (
           <ListItem key={i} sx={{ p: 0 }}>
             <Link
+              component={RouterLink}
               className={clsx(style.link)}
-              href={`/${currentFilial.id}/${value}`}
+              to={`/${currentFilial.id}/${value}`}
               variant="body2"
               sx={{
                 color: "#072659",

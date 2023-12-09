@@ -1,0 +1,19 @@
+@import "@/sass/helpers/variables";
+@import "@/sass/helpers/mixins.scss";
+
+.cell {
+  .button {
+    cursor: auto;
+
+    svg {
+      transition: 0.3s;
+    }
+    @include hocus() {
+      background-color: transparent;
+
+      svg {
+        color: #072659;
+      }
+    }
+  }
+}

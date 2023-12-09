@@ -1,17 +1,13 @@
 export const sxField = {
-  // "& .MuiFormLabel-root.MuiFormLabel-filled": {
-  //   transform: "translate(0.875rem, -0.5625rem) scale(0.75)",
-  // },
-  // "& .MuiInputLabel-root.Mui-focused": {
-  //   transform: "translate(0.875rem, -0.5625rem) scale(0.75)",
-  // },
-  // "& .MuiOutlinedInput-notchedOutline": {
-  //   borderColor: "#657a9d",
-  //   borderRadius: "0.3125rem",
-  // },
+  "& .MuiFormLabel-root.MuiFormLabel-filled": {
+    transform: "translate(0.875rem, -0.5625rem) scale(0.75)",
+  },
+  "& .MuiInputLabel-root.Mui-focused": {
+    transform: "translate(0.875rem, -0.5625rem) scale(0.75)",
+  },
 };
 
-export const sxCell = { width: "20%", pl: "1rem", pr: "1rem" };
+export const sxCell = { pl: "1rem", pr: "1rem" };
 
 interface IFields {
   name: string;

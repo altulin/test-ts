@@ -8,12 +8,23 @@ import useFetchToStore from "@/hooks/fetchToStore";
 import { useAppSelector, useAppDispatch } from "@/hooks/hook";
 import { IFilialItem } from "@/store/initialState";
 import styles from "./BarComboBox.module.scss";
+import { useNavigate, useParams } from "react-router-dom";
+import { links } from "../BarLinks/var";
 
 const BarComboBox: FC = () => {
   const fetch = useFetchToStore(getFilials, setFilials);
   const dispatch = useAppDispatch();
-
   const { filials, currentFilial } = useAppSelector((state) => state.app);
+  const { menu } = useParams();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (currentFilial?.id) {
+      let path: string = `/${currentFilial.id}`;
+      path = menu ? `${path}/${menu}` : `${path}/${links[0].value}`;
+      navigate(path);
+    }
+  }, [currentFilial, menu, navigate]);
 
   useEffect(() => {
     fetch();

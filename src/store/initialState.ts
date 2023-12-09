@@ -22,10 +22,12 @@ interface IInitialState {
   filials: null | IFilialItem[];
   currentFilial: null | IFilialItem;
   goods: null | IMenu[];
+  pages: null | number;
 }
 
 export const initialState: IInitialState = {
   filials: null,
   currentFilial: null,
   goods: null,
+  pages: null,
 };

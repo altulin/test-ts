@@ -21,11 +21,22 @@ const appSlice = createSlice({
       state.currentFilial = action.payload;
     },
 
-    setgoods(state, action: PayloadAction<IMenu[]>) {
+    setGoods(state, action: PayloadAction<IMenu[] | null>) {
       state.goods = action.payload;
+    },
+    setPages(state, action: PayloadAction<number | null>) {
+      switch (action.payload) {
+        case null || 1:
+          state.pages = null;
+          break;
+
+        default:
+          state.pages = action.payload;
+      }
     },
   },
 });
 
-export const { setFilials, setCurrentFilial } = appSlice.actions;
+export const { setFilials, setCurrentFilial, setGoods, setPages } =
+  appSlice.actions;
 export default appSlice.reducer;
