@@ -1,7 +1,7 @@
 @import "@/sass/helpers/variables";
 @import "@/sass/helpers/mixins.scss";
 
-.tableData {
-  &__inner {
-  }
+.td {
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

@@ -1,3 +1,5 @@
+// import { active } from "@/components/table/Head/script";
+
 export interface IFilialItem {
   id: number;
   label: string;
@@ -23,6 +25,7 @@ interface IInitialState {
   currentFilial: null | IFilialItem;
   goods: null | IMenu[];
   pages: null | number;
+  search: { [key: string]: string } | null;
 }
 
 export const initialState: IInitialState = {
@@ -30,4 +33,6 @@ export const initialState: IInitialState = {
   currentFilial: null,
   goods: null,
   pages: null,
+  // search: { active: active[0].value },
+  search: null,
 };

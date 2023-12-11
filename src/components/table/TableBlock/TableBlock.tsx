@@ -1,20 +1,29 @@
 import { FC, ChangeEvent } from "react";
-import { Pagination, Table, TableContainer } from "@mui/material";
+import {
+  Pagination,
+  PaginationItem,
+  Table,
+  TableContainer,
+} from "@mui/material";
 import Head from "../Head/Head";
 import { Outlet, useParams } from "react-router-dom";
 import { useAppSelector, useAppDispatch } from "@/hooks/hook";
 import { axs } from "@/api/axs/response";
 import { setGoods, setPages } from "@/store/appSlice";
+import { getParams } from "../Head/script";
 
 const TableBlock: FC = () => {
-  const { pages } = useAppSelector((state) => state.app);
+  const { pages, search } = useAppSelector((state) => state.app);
   const dispatch = useAppDispatch();
   const { city, menu } = useParams();
 
   const handleChange = async (_: ChangeEvent<unknown>, value: number) => {
     try {
       const response = await axs.get(
-        `/filial/${city}/${menu}/?limit=5&page=${value}`
+        `/filial/${city}/${menu}/?limit=5&page=${value}`,
+        {
+          params: getParams(search),
+        }
       );
 
       if (response.status !== 200) return;
@@ -30,13 +39,15 @@ const TableBlock: FC = () => {
   return (
     <>
       <TableContainer>
-        <Table>
+        <Table sx={{ tableLayout: "fixed" }}>
           <Head />
           <Outlet />
         </Table>
       </TableContainer>
 
-      {pages && <Pagination count={pages} onChange={handleChange} />}
+      {pages && (
+        <Pagination count={pages} variant="outlined" onChange={handleChange} />
+      )}
     </>
   );
 };

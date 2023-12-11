@@ -14,7 +14,7 @@ const appSlice = createSlice({
         };
       });
       state.filials = listFilials;
-      state.currentFilial = listFilials[0];
+      // state.currentFilial = listFilials[0];
     },
 
     setCurrentFilial(state, action: PayloadAction<IFilialItem>) {
@@ -24,6 +24,7 @@ const appSlice = createSlice({
     setGoods(state, action: PayloadAction<IMenu[] | null>) {
       state.goods = action.payload;
     },
+
     setPages(state, action: PayloadAction<number | null>) {
       switch (action.payload) {
         case null || 1:
@@ -34,9 +35,13 @@ const appSlice = createSlice({
           state.pages = action.payload;
       }
     },
+
+    setSearch(state, action: PayloadAction<{ [key: string]: string }>) {
+      state.search = action.payload;
+    },
   },
 });
 
-export const { setFilials, setCurrentFilial, setGoods, setPages } =
+export const { setFilials, setCurrentFilial, setGoods, setPages, setSearch } =
   appSlice.actions;
 export default appSlice.reducer;

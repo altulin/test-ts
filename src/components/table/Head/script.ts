@@ -9,6 +9,8 @@ export const sxField = {
 
 export const sxCell = { pl: "1rem", pr: "1rem" };
 
+export const tdStyle = { width: "17.5%", border: 0 };
+
 interface IFields {
   name: string;
   label: string;
@@ -18,10 +20,22 @@ interface IFields {
 export const fields: IFields[] = [
   { name: "name", label: "Название меню" },
   { name: "filial", label: "Филиал" },
-  { name: "point", label: "Торговая точка" },
+  { name: "tt", label: "Торговая точка" },
 ];
 
-export const active = [
-  { label: "Активно", id: 1 },
-  { label: "Не активно", id: 2 },
+export interface IActive {
+  label: string;
+  value: "active" | "no_active";
+}
+
+export const active: IActive[] = [
+  { label: "Активно", value: "active" },
+  { label: "Не активно", value: "no_active" },
 ];
+
+export const getParams = (obj: { [key: string]: string } | null) => {
+  if (!obj) return;
+  const arr = Object.entries(obj);
+  const filtered = arr.filter(([, value]) => value.length);
+  return Object.fromEntries(filtered);
+};

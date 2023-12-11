@@ -1,5 +1,7 @@
 import { FC } from "react";
 import { TableCell, Typography } from "@mui/material";
+import { tdStyle } from "../Head/script";
+import style from "./TableData.module.scss";
 
 interface ITableData {
   children: string;
@@ -7,8 +9,8 @@ interface ITableData {
 
 const TableData: FC<ITableData> = ({ children }) => {
   return (
-    <TableCell sx={{ verticalAlign: "top" }}>
-      <Typography variant="body1" component="p">
+    <TableCell sx={{ verticalAlign: "top", ...tdStyle }}>
+      <Typography variant="body1" component="p" className={style.td}>
         {children}
       </Typography>
     </TableCell>

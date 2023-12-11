@@ -7,6 +7,7 @@ import { setGoods, setPages } from "@/store/appSlice";
 import { checkArr } from "@/service/checkArr";
 import TableData from "../TableData/TableData";
 import TableIcons from "../TableIcons/TableIcons";
+import { tdStyle } from "../Head/script";
 
 const TableContent: FC = () => {
   const { city, menu } = useParams();
@@ -42,7 +43,7 @@ const TableContent: FC = () => {
 
             <TableData>{item.active ? "Активно" : "Не активно"}</TableData>
 
-            <TableCell sx={{ verticalAlign: "top" }}>
+            <TableCell sx={{ verticalAlign: "top", ...tdStyle }}>
               {item.export.map((word, i) => (
                 <Typography key={i} variant="body1" component="p">
                   {word}

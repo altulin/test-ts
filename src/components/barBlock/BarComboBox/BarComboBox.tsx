@@ -9,7 +9,8 @@ import { useAppSelector, useAppDispatch } from "@/hooks/hook";
 import { IFilialItem } from "@/store/initialState";
 import styles from "./BarComboBox.module.scss";
 import { useNavigate, useParams } from "react-router-dom";
-import { links } from "../BarLinks/var";
+import styleLabel from "@/components/table/Head/Head.module.scss";
+import { sxField } from "@/components/table/Head/script";
 
 const BarComboBox: FC = () => {
   const fetch = useFetchToStore(getFilials, setFilials);
@@ -21,7 +22,8 @@ const BarComboBox: FC = () => {
   useEffect(() => {
     if (currentFilial?.id) {
       let path: string = `/${currentFilial.id}`;
-      path = menu ? `${path}/${menu}` : `${path}/${links[0].value}`;
+      // path = menu ? `${path}/${menu}` : `${path}/${links[0].value}`;
+      path = menu ? `${path}/${menu}` : `/`;
       navigate(path);
     }
   }, [currentFilial, menu, navigate]);
@@ -31,12 +33,9 @@ const BarComboBox: FC = () => {
   }, [fetch]);
 
   return (
-    currentFilial &&
     filials && (
       <Autocomplete
-        value={currentFilial}
         isOptionEqualToValue={(option, value) => option.id === value.id}
-        defaultValue={currentFilial}
         popupIcon={<Icon width={"0.5rem"} height={"1rem"} />}
         options={filials}
         sx={sx}
@@ -44,11 +43,17 @@ const BarComboBox: FC = () => {
         renderInput={(params) => {
           return (
             <TextField
+              className={styleLabel.field}
+              label="Город"
               {...params}
               InputProps={{
                 ...params.InputProps,
                 className: styles.input,
               }}
+              InputLabelProps={{
+                className: styleLabel.label,
+              }}
+              sx={sxField}
             />
           );
         }}
