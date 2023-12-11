@@ -9,7 +9,7 @@ export const sxField = {
 
 export const sxCell = { pl: "1rem", pr: "1rem" };
 
-export const tdStyle = { width: "17.5%", border: 0 };
+export const tdStyle = { width: "16%", border: 0 };
 
 interface IFields {
   name: string;

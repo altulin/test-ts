@@ -1,10 +1,5 @@
 import { FC, ChangeEvent } from "react";
-import {
-  Pagination,
-  PaginationItem,
-  Table,
-  TableContainer,
-} from "@mui/material";
+import { Pagination, Table, TableContainer } from "@mui/material";
 import Head from "../Head/Head";
 import { Outlet, useParams } from "react-router-dom";
 import { useAppSelector, useAppDispatch } from "@/hooks/hook";

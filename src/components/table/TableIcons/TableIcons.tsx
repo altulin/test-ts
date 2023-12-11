@@ -16,7 +16,7 @@ const TableButton: FC<ITableButton> = ({ children }) => {
 const TableIcons: FC = () => {
   const iconStyle = { color: "#657A9D" };
   return (
-    <TableCell className={style.cell} sx={{ verticalAlign: "top" }}>
+    <TableCell className={style.cell} sx={{ verticalAlign: "top", border: 0 }}>
       <Stack direction="row">
         <TableButton>
           <BarChartIcon sx={iconStyle} />
