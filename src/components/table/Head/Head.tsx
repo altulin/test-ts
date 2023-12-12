@@ -27,13 +27,13 @@ import { axs } from "@/api/axs/response";
 
 const Head: FC = () => {
   const { city, menu } = useParams();
-  const { search } = useAppSelector((state) => state.app);
+  const { search, goods } = useAppSelector((state) => state.app);
   const debouncedSearch = useDebounce(search, 500);
   const dispatch = useAppDispatch();
 
   const handleInput: (
     event: FormEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => Promise<void> = async (event) => {
+  ) => void = (event) => {
     const { value, name } = event.target as HTMLInputElement;
 
     dispatch(
@@ -47,6 +47,7 @@ const Head: FC = () => {
   const fetch = useCallback(async () => {
     if (!debouncedSearch) return;
     if (!city) return;
+    if (!goods) return;
 
     try {
       const response = await axs.get(
@@ -67,6 +68,12 @@ const Head: FC = () => {
     fetch();
   }, [debouncedSearch, fetch]);
 
+  const getValue = (name: string) => {
+    if (!search) return "";
+
+    return search[`${name}`] ? search[`${name}`] : "";
+  };
+
   return (
     <TableHead>
       <TableRow className={style.head}>
@@ -76,6 +83,7 @@ const Head: FC = () => {
               name={name}
               className={style.field}
               label={label}
+              value={getValue(name)}
               inputProps={{
                 className: style.input,
                 onInput: handleInput,
@@ -100,7 +108,6 @@ const Head: FC = () => {
                 label="Статус"
                 InputProps={{
                   ...params.InputProps,
-
                   className: style.complete,
                 }}
                 InputLabelProps={{
@@ -114,13 +121,12 @@ const Head: FC = () => {
               _: SyntheticEvent<Element, Event>,
               value: IActive | null
             ) => {
-              value &&
-                dispatch(
-                  setSearch({
-                    ...search,
-                    active: value.value,
-                  })
-                );
+              dispatch(
+                setSearch({
+                  ...search,
+                  active: value ? value.value : "",
+                })
+              );
             }}
           />
         </TableCell>

@@ -17,7 +17,7 @@ const appSlice = createSlice({
       // state.currentFilial = listFilials[0];
     },
 
-    setCurrentFilial(state, action: PayloadAction<IFilialItem>) {
+    setCurrentFilial(state, action: PayloadAction<IFilialItem | null>) {
       state.currentFilial = action.payload;
     },
 
@@ -36,7 +36,7 @@ const appSlice = createSlice({
       }
     },
 
-    setSearch(state, action: PayloadAction<{ [key: string]: string }>) {
+    setSearch(state, action: PayloadAction<{ [key: string]: string } | null>) {
       state.search = action.payload;
     },
   },

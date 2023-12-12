@@ -3,7 +3,7 @@ import { FC, useEffect, SyntheticEvent } from "react";
 import Icon from "@/images/svg/v.svg?react";
 import { sx } from "./style";
 import { getFilials } from "@/api/axs/response";
-import { setCurrentFilial, setFilials } from "@/store/appSlice";
+import { setCurrentFilial, setFilials, setPages } from "@/store/appSlice";
 import useFetchToStore from "@/hooks/fetchToStore";
 import { useAppSelector, useAppDispatch } from "@/hooks/hook";
 import { IFilialItem } from "@/store/initialState";
@@ -61,7 +61,11 @@ const BarComboBox: FC = () => {
           _: SyntheticEvent<Element, Event>,
           value: IFilialItem | null
         ) => {
-          value && dispatch(setCurrentFilial(value));
+          dispatch(setCurrentFilial(value));
+          if (!value) {
+            navigate("/");
+            dispatch(setPages(null));
+          }
         }}
       />
     )
